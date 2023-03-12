@@ -27,12 +27,8 @@ def _max_width_():
 
 _max_width_()
 
-c30, c31, c32 = st.columns([2.5, 1, 3])
-
-with c30:
-    # st.image("logo.png", width=400)
-    st.title("🔑 AI Summarizer")
-    st.header("")
+st.title("🔑 AI Summarizer")
+st.header("")
 
 with st.expander("ℹ️ - About this app", expanded=False):
 
@@ -49,17 +45,17 @@ st.markdown("")
 st.markdown("## **📌 Enter Website URL to scrap and summarize **")
 
 with st.form(key="my_form"):
-    ce, c1, ce, c2, c3 = st.columns([0.07, 1, 0.07, 5, 0.07])
-    with c1:
-        ModelType = st.radio(
-            "Choose your model",
-            ["BERT (Default)", "DistilBERT", "Flair"],
-            help="At present, you can choose between following models. More to come!",
-        )
+    #ce, c1, ce, c2, c3 = st.columns([0.07, 1, 0.07, 5, 0.07])
+    # with c1:
+    #     ModelType = st.radio(
+    #         "Choose your model",
+    #         ["BERT (Default)", "DistilBERT", "Flair"],
+    #         help="At present, you can choose between following models. More to come!",
+    #     )
 
-    with c2:
-        url = st.text_input("Paste your webpage URL below",)
-        submit_button = st.form_submit_button(label="✨ Get me summary !")
+    #with c2:
+    url = st.text_input("Paste your webpage URL below",)
+    submit_button = st.form_submit_button(label="✨ Get me summary !")
 
 
 if not submit_button:
