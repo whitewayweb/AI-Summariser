@@ -35,7 +35,7 @@ with st.expander("ℹ️ - About this app", expanded=False):
     st.write(
         """     
 -   The *AI Summarizer* app is an easy-to-use interface built in Streamlit for text summarization purpose!
--   It uses BERT model for text summarization of web page content scrapped using Beautifulsoup library.
+-   It uses spaCy NLP model for large text summarization using of web page content scrapped using Beautifulsoup library. This tool uses the TextRank algorithm for extracting the most important sentences from the input text.
 	    """
     )
 
