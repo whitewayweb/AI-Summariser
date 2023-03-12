@@ -3,6 +3,7 @@ import re
 from datetime import datetime
 
 from bs4 import BeautifulSoup
+from summariser import Summarizerr
 
 class Util():
 
@@ -67,3 +68,20 @@ class Util():
     
     def getImage(self, soup):
         return self.getMeta(soup, 'image')
+    
+
+    def getSummary(self, soup):
+        document = []
+        for p in soup.find_all('p'):
+            para = p.get_text()
+
+            # Regex to count the number of words in a paragraph
+            count_words = len(re.findall(r'\w+', para))
+            if(count_words > 50):
+                document.append(p.get_text())
+
+        article=(' '.join(document)) # Article 
+        
+        summary = Summarizerr.articleSummary(article)
+
+        return summary
