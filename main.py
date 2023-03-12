@@ -74,25 +74,14 @@ with st.spinner("Generating summary details..."):
     pub_date = util.getDate(soup)
     des = util.getDescription(soup)
     publisher = util.getPublisher(soup)
+    summary = util.getSummary(soup)
     imageurl = util.getImage(soup)
 
     if imageurl != None:
-        image = f"<img src ='{imageurl}' />"
+        image = f"<img src ='{imageurl}' width='100%' />"
     else:
         image = ""
-
-    document = []
-    for p in soup.find_all('p'):
-        para = p.get_text()
-
-        # Regex to count the number of words in a paragraph
-        count_words = len(re.findall(r'\w+', para))
-        if(count_words > 50):
-            document.append(p.get_text())
-
-        article=(' '.join(document)) # Article 
-        bert_model = Summarizer() 
-        summary = bert_model(article, min_length=100)
+    
 
     st.markdown(
         " ".join([
@@ -108,7 +97,7 @@ with st.spinner("Generating summary details..."):
             "</tr>",
             "<tr>",
             "<th>Summary</th>",
-            f"<td class=''>{des}</td>",
+            f"<td class=''>{summary}</td>",
             "</tr>",
             "<tr>",
             "<th>Description</th>",
